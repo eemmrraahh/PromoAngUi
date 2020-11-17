@@ -1,0 +1,71 @@
+<!-- dialog-box.component.html -->
+<!--<div class="row">
+  <div class="col-xl-12">
+    <mat-dialog-title>
+      {{action}} Cluster Item
+    </mat-dialog-title>
+  </div>
+
+</div>-->
+
+<mat-dialog-content *ngIf="action != 'Delete'; else elseTemplate">
+
+  <div class="row">
+    <div class="col-xl-12">
+      <div class="form-group">
+        <label>
+          Min Spending
+        </label>
+        <input type="number" placeholder="Only numeric values" matInput [(ngModel)]="local_data.MinSpending" class="form-control">
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xl-12">
+      <div class="form-group">
+        <label>
+          Max Spending
+        </label>
+        <input type="number" placeholder="Only numeric values" matInput [(ngModel)]="local_data.MaxSpending" class="form-control">
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xl-12">
+      <div class="form-group">
+        <label>
+          Amount Off
+        </label>
+        <input type="number" placeholder="Only numeric values" matInput [(ngModel)]="local_data.AmountOff" class="form-control">
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xl-12">
+      <div class="form-group">
+        <label>
+          Percent Off
+        </label>
+        <input type="number" placeholder="Only numeric values" matInput [(ngModel)]="local_data.PercentOff" class="form-control">
+      </div>
+    </div>
+  </div>
+
+  <!--<mat-form-field>
+
+
+
+  </mat-form-field>-->
+
+</mat-dialog-content>
+<ng-template #elseTemplate>
+  Sure to delete ?<br />
+  Min Spending <b>{{local_data.MinSpending}}</b><br />
+  Max Spending <b>{{local_data.MaxSpending}}</b><br />
+  Amount Off <b>{{local_data.AmountOff}}</b><br />
+  Percent Off <b>{{local_data.PercentOff}}</b><br />
+</ng-template>
+<mat-dialog-actions>
+  <button mat-button (click)="doAction()">{{action}}</button>
+  <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancel</button>
+</mat-dialog-actions>

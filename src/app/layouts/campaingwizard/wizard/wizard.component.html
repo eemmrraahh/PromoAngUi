@@ -1,0 +1,2025 @@
+<div class="card card-custom gutter-b">
+  <!--<div class="card-header">
+    <div class="card-title">
+      <h3 class="card-label">Wizard 1</h3>
+    </div>
+  </div>-->
+  <div class="card-body">
+    <!--begin: Wizard -->
+    <div #wizard
+         class="wizard wizard-1"
+         id="kt_wizard_v1"
+         data-wizard-state="step-first"
+         data-wizard-clickable="true">
+      <!--begin: Form Wizard Nav -->
+      <div class="wizard-nav border-bottom">
+        <div class="wizard-steps p-8 p-lg-10">
+          <a class="wizard-step"
+             href="javascript:;"
+             data-wizard-type="step"
+             data-wizard-state="current">
+            <div class="wizard-label">
+              <i class="wizard-icon flaticon-home"></i>
+              <h3 class="wizard-title">1.General</h3>
+            </div>
+          </a>
+          <a class="wizard-step" data-wizard-type="step">
+            <div class="wizard-label">
+              <i class="wizard-icon  flaticon-customer"></i>
+              <h3 class="wizard-title">2.Customer</h3>
+            </div>
+          </a>
+          <a class="wizard-step" data-wizard-type="step">
+            <div class="wizard-label">
+              <i class="wizard-icon flaticon-placeholder"></i>
+              <h3 class="wizard-title">3.Store(s)</h3>
+            </div>
+          </a>
+          <a class="wizard-step" data-wizard-type="step">
+            <div class="wizard-label">
+              <i class="wizard-icon flaticon-pie-chart"></i>
+              <h3 class="wizard-title">4.Price Strategy</h3>
+            </div>
+          </a>
+          <a class="wizard-step" data-wizard-type="step">
+            <div class="wizard-label">
+              <i class="wizard-icon flaticon-layers"></i>
+              <h3 class="wizard-title"> 5.Rules & Triggers</h3>
+            </div>
+          </a>
+          <!--<a class="wizard-step" href="javascript:;" data-wizard-type="step">-->
+          <a class="wizard-step" data-wizard-type="step">
+            <div class="wizard-label">
+              <i class="wizard-icon flaticon-chat-1"></i>
+              <h3 class="wizard-title">6.Communication</h3>
+            </div>
+          </a>
+          <a class="wizard-step" data-wizard-type="step">
+            <div class="wizard-label">
+              <i class="wizard-icon flaticon2-accept"></i>
+              <h3 class="wizard-title">7.Activate Your Campaign</h3>
+            </div>
+          </a>
+        </div>
+      </div>
+      <!--end: Form Wizard Nav -->
+      <div class="row justify-content-center my-10 px-8 my-lg-15 px-lg-10">
+        <div class="col-xl-12 col-xxl-7">
+          <!--begin: Form Wizard Form-->
+          <form class="form" id="kt_form">
+            <!--begin: Form Wizard Step 1 -->
+            <!--Campaign Defination -->
+            <div class="pb-5" data-wizard-type="step-content" data-wizard-state="current">
+              <div class="mb-10 font-weight-bold text-dark">
+                Setup Your Campaign Defination
+              </div>
+              <div class="row">
+                <div class="col-xl-6">
+                  <div class="form-group">
+                    <label>Campaign ID</label>
+                    <input type="text" class="form-control" name="campaignId" [(ngModel)]="camp.CampaignId" placeholder="Campaign ID" disabled />
+                    <span class="form-text text-muted">This field will be generate automatically</span>
+                  </div>
+                </div>
+                <div class="col-xl-6">
+                  <div class="form-group">
+                    <label>Campaign ID 2 (Optional)</label>
+                    <input type="text" class="form-control" name="campaignId2" [(ngModel)]="camp.CampaingId2" placeholder="Optinal Campaign Id" />
+                    <span class="form-text text-muted">You can define Campaign Id</span>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-6">
+                  <div class="form-group">
+                    <label>Campaign Name</label>
+                    <input type="text" class="form-control" name="campaignName" [(ngModel)]="camp.CampaignName" placeholder="Campaign Name" />
+                    <span class="form-text text-muted">Please Enter Campaign Name</span>
+                  </div>
+                </div>
+                <div class="col-xl-6">
+                  <div class="form-group">
+                    <label> Status</label>
+                    <mat-select name="campaignStatus" [compareWith]="compareObjects" [(ngModel)]="camp.Statu" class="form-control">
+                      <mat-option *ngFor="let item of campaignStatuList" [value]="item">{{item.Name}}</mat-option>
+                    </mat-select>
+                    <span class="form-text text-muted">Please Select Campaign Status</span>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-6">
+                  <div class="form-group">
+                    <label> Channel</label>
+                    <mat-select name="countrySelect" [compareWith]="compareObjects" [(ngModel)]="camp.Channel" multiple class="form-control">
+                      <mat-select-search></mat-select-search>
+                      <mat-option *ngFor="let item of campaignChannelList" [value]="item">{{item.Name}}</mat-option>
+                    </mat-select>
+                    <span class="form-text text-muted">Please Select Campaign Channel</span>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-6">
+                  <div class="form-group">
+                    <label>
+                      Start Date
+                    </label>
+                    <div class="input-group">
+                      <input class="form-control" placeholder="dd-mm-yyyy" name="sdd" [(ngModel)]="campaignStartDate" ngbDatepicker #sd="ngbDatepicker">
+                      <div class="input-group-append">
+                        <button class="btn btn-outline-secondary calendar" (click)="sd.toggle()" type="button"></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-6">
+                  <div class="form-group">
+                    <label>End Date</label>
+                    <div class="input-group">
+                      <input class="form-control" placeholder="dd-mm-yyyy" name="eed" [(ngModel)]="campaignEndDate" ngbDatepicker #ed="ngbDatepicker">
+                      <div class="input-group-append">
+                        <button class="btn btn-outline-secondary calendar" (click)="ed.toggle()" type="button"></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-12">
+                  <div class="form-group">
+                    <label>Working Days</label>
+                    <div class="kt-checkbox-inline">
+                      <mat-checkbox name="allDayCheckBox" [checked]="camp.AllDays" [(NgModel)]="camp.AllDays" (change)="onAllDaysChange($event)">
+                        All Day
+                      </mat-checkbox>
+                      &nbsp;
+                      <mat-checkbox [(NgModel)]="camp.Monday" [checked]="camp.Monday" (change)="onMondayChange($event)">
+                        Monday
+                      </mat-checkbox>
+                      &nbsp;
+                      <mat-checkbox [(NgModel)]="camp.Tuesday" [checked]="camp.Tuesday" (change)="onTuesdayChange($event)">
+                        Tuesday
+                      </mat-checkbox>
+                      &nbsp;
+                      <mat-checkbox [(NgModel)]="camp.Wednesday" [checked]="camp.Wednesday" (change)="onWednesdayChange($event)">
+                        Wednesday
+                      </mat-checkbox>
+                      &nbsp;
+                      <mat-checkbox [(NgModel)]="camp.Thursday" [checked]="camp.Thursday" (change)="onThursdayChange($event)">
+                        Thursday
+                      </mat-checkbox>
+                      &nbsp;
+                      <mat-checkbox [(NgModel)]="camp.Friday" [checked]="camp.Friday" (change)="onFridayChange($event)">
+                        Friday
+                      </mat-checkbox>
+                      &nbsp;
+                      <mat-checkbox [(NgModel)]="camp.Saturday" [checked]="camp.Saturday" (change)="onSaturdayChange($event)">
+                        Saturday
+                      </mat-checkbox>
+                      &nbsp;
+                      <mat-checkbox [(NgModel)]="camp.Sunday" [checked]="camp.Sunday" (change)="onSundayChange($event)">
+                        Sunday
+                      </mat-checkbox>
+                      &nbsp;
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-2">
+                  <div class="form-group">
+                    <label>Working Hours</label>
+                    <mat-checkbox [(NgModel)]="camp.AllHour" [checked]="camp.AllHour">
+                      All Hour
+                    </mat-checkbox>
+                  </div>
+                </div>
+                <div class="col-xl-3">
+                  <div class="form-group">
+                    <label>Start Time</label>
+                    <ngb-timepicker name="startName" [(ngModel)]="campaignStartTime" [meridian]="true" [spinners]="false"> </ngb-timepicker>
+                  </div>
+                </div>
+                <div class="col-xl-3">
+                  <div class="form-group">
+                    <label>End Time</label>
+                    <ngb-timepicker name="endName" [(ngModel)]="campaignEndTime" [meridian]="true" [spinners]="false"></ngb-timepicker>
+                  </div>
+                </div>
+                <div class="col-xl-4">
+                  <div class="form-group">
+                    <label>Tolarance Time (min)</label>
+                    <input type="text" class="form-control" name="tolTime" [(ngModel)]="camp.ToleranceTime" placeholder="Tolerance Time (Minute)" />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-6">
+                  <div class="form-group">
+                    <label>SMS Participation</label>
+                    <mat-select name="smsParticipation" [compareWith]="compareObjects" [(ngModel)]="camp.SmsParticipation" class="form-control" (selectionChange)="onSmsParticipationChange(camp.SmsParticipation)">
+                      <mat-option *ngFor="let item of smsParticipationList" [value]="item">{{item.Name}}</mat-option>
+                    </mat-select>
+                  </div>
+                </div>
+              </div>
+              <div class="row" *ngIf="SmsParticipationDivShow">
+                <div class="col-xl-6">
+                  <div class="form-group">
+                    <label>Participation Code</label>
+                    <input type="text" class="form-control" name="participationCode" [(ngModel)]="camp.ParticipationCode" placeholder="Participation Code" />
+                  </div>
+                </div>
+                <div class="col-xl-6">
+                  <div class="form-group">
+                    <label>Participation Number</label>
+                    <input type="text" class="form-control" name="participationNumber" [(ngModel)]="camp.ParticipationNumber" placeholder="Participation Number" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-xl-6">
+                  <div class="form-group">
+                    <label>Approval</label>
+                    <mat-select name="approval" [compareWith]="compareObjects" [(ngModel)]="camp.Approval" class="form-control" (selectionChange)="onApprovalChange(camp.Approval)">
+                      <mat-option *ngFor="let item of approvalList" [value]="item">{{item.Name}}</mat-option>
+                    </mat-select>
+                  </div>
+                </div>
+              </div>
+              <div class="row" *ngIf="IsApprovalDivShow">
+                <div class="col-xl-6">
+                  <div class="form-group">
+                    <label>Approved By</label>
+                    <input type="text" class="form-control" name="approvedBy" [(ngModel)]="camp.ApprovedBy" placeholder="name.surname@extraloyalty.com" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--end: Form Wizard Step 1-->
+            <!--begin: Form Wizard Step 2-->
+            <!--Customer Defination -->
+            <div class="pb-5" data-wizard-type="step-content">
+              <div class="row">
+                <div class="col-xl-6">
+                  <div class="card card-custom gutter-b">
+                    <div class="card-header">
+                      <div class="card-title">
+                        <h3 class="card-label">
+                          Individual
+                          <small>customers</small>
+                        </h3>
+                      </div>
+                    </div>
+
+                    <div class="card-body">
+                      <div class="form-group">
+                        <label>Card Type</label>
+                        <mat-select name="invCardType" [compareWith]="compareObjects" [(ngModel)]="camp.InvCardType" multiple class="form-control">
+                          <mat-option *ngFor="let item of invCardTypeList" [value]="item">{{item.Name}}</mat-option>
+                        </mat-select>
+                        <span class="form-text text-muted">Please Select Card Type</span>
+                      </div>
+                      <div class="form-group">
+                        <label>Macro Segment(s)</label>
+                        <mat-select name="invMacroSegment" [compareWith]="compareObjects" [(ngModel)]="camp.InvMacroSegment" multiple class="form-control">
+                          <mat-option *ngFor="let item of invMacroSegmentList" [value]="item">{{item.Name}}</mat-option>
+                        </mat-select>
+                        <span class="form-text text-muted">Please Select Macro Segment</span>
+                      </div>
+                      <div class="form-group">
+                        <label> Micro Segment(s)</label>
+                        <mat-select name="invMicroSegment" [compareWith]="compareObjects" [(ngModel)]="camp.InvMicroSegment" multiple class="form-control">
+                          <mat-option *ngFor="let item of invMicroSegmentList" [value]="item">{{item.Name}}</mat-option>
+                        </mat-select>
+                        <span class="form-text text-muted">Please Select Micro Segment</span>
+                      </div>
+                      <div class="form-group">
+                        <label> RFM Segment(s)</label>
+                        <mat-select name="invRfmMicroSegment" [compareWith]="compareObjects" [(ngModel)]="camp.InvRfmSegment" multiple class="form-control">
+                          <mat-option *ngFor="let item of invRfmSegmentList" [value]="item">{{item.Name}}</mat-option>
+                        </mat-select>
+                        <span class="form-text text-muted">Please Select RFM Segment</span>
+                      </div>
+                      <div class="form-group">
+                        <label> Target List</label>
+                        <textarea class="form-control" id="rCardOut" rows="3"></textarea>
+                      </div>
+                      <div class="form-group">
+                        <label>Exclude Members</label>
+                        <textarea name="sxcludeMembers" [(ngModel)]="camp.ExcludeMembers" class="form-control" id="rCardOut" rows="3"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-6">
+                  <div class="card card-custom gutter-b">
+                    <div class="card-header">
+                      <div class="card-title">
+                        <h3 class="card-label">
+                          Corporate
+                          <small>customers</small>
+                        </h3>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <div class="form-group">
+                        <label>Card Type</label>
+                        <mat-select name="companyCardType" [compareWith]="compareObjects" [(ngModel)]="camp.CompanyCardType" multiple class="form-control">
+                          <mat-option *ngFor="let item of companyCardTypeList" [value]="item">{{item.Name}}</mat-option>
+                        </mat-select>
+                        <span class="form-text text-muted">Please Select Company Type</span>
+                      </div>
+                      <div class="form-group">
+                        <label>Macro Segment(s)</label>
+                        <mat-select name="companyMacroSegment" [compareWith]="compareObjects" [(ngModel)]="camp.CompanyMacroSegment" multiple class="form-control">
+                          <mat-option *ngFor="let item of companyMacroSegmentList" [value]="item">{{item.Name}}</mat-option>
+                        </mat-select>
+                        <span class="form-text text-muted">Please Select Company Segment</span>
+                      </div>
+                      <div class="form-group">
+                        <label> Target List</label>
+                        <textarea class="form-control" id="rCardOut" rows="3"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--end: Form Wizard Step 2-->
+            <!--Store Defibation-->
+            <!--begin: Form Wizard Step 3-->
+            <div class="pb-5" data-wizard-type="step-content">
+              <!--<div class="mb-10 font-weight-bold text-dark">
+                Select your Services
+              </div>-->
+              <div class="container">
+                <ngb-tabset [destroyOnHide]="false" (tabChange)="onStoreTabChange()">
+                  <ngb-tab title="Filters">
+                    <ng-template ngbTabContent>
+                      <div class="row">
+                        <div class="col-xl-6">
+                          <div class="form-group">
+                            <label>Company</label>
+                            <mat-select name="storeCompanySelect" [(ngModel)]="storeCriteria.CompanyId" multiple class="form-control">
+                              <mat-option *ngFor="let item of companyList" value={{item.CrmId}}>{{item.Name}}</mat-option>
+                            </mat-select>
+                          </div>
+                        </div>
+                        <div class="col-xl-6">
+                          <div class="form-group">
+                            <label>Store Type</label>
+                            <mat-select name="storeTypeSelect" [(ngModel)]="storeCriteria.StoreTypeId" multiple class="form-control">
+                              <mat-option *ngFor="let item of storeTypeList" value={{item.CrmId}}>{{item.Name}}</mat-option>
+                            </mat-select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-xl-6">
+                          <div class="form-group">
+                            <label>Country</label>
+                            <mat-select name="storeCountySelect" [(ngModel)]="storeCriteria.CountryId" multiple class="form-control">
+                              <mat-option *ngFor="let item of countryList" value={{item.CrmId}}>{{item.Name}}</mat-option>
+                            </mat-select>
+                          </div>
+                        </div>
+                        <div class="col-xl-6">
+                          <div class="form-group">
+                            <label>Store Group</label>
+                            <mat-select name="storeGroupSelect" [(ngModel)]="storeCriteria.StoreGroupId" multiple class="form-control">
+                              <mat-option *ngFor="let item of storeGroupList" value={{item.CrmId}}>{{item.Name}}</mat-option>
+                            </mat-select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-xl-6">
+                          <div class="form-group">
+                            <label>City</label>
+                            <mat-select name="storeCitySelect" [(ngModel)]="storeCriteria.CityId" multiple class="form-control">
+                              <mat-option *ngFor="let item of cityList" value={{item.CrmId}}>{{item.Name}}</mat-option>
+                            </mat-select>
+                          </div>
+                        </div>
+                        <div class="col-xl-6">
+                          <div class="form-group">
+                            <label>Store Segment</label>
+                            <mat-select name="storeSegmentSelect" [(ngModel)]="storeCriteria.StoreSegmentId" multiple class="form-control">
+                              <mat-option *ngFor="let item of storeSegmentList" value={{item.CrmId}}>{{item.Name}}</mat-option>
+                            </mat-select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-xl-6">
+                          <div class="form-group">
+                            <label>Region</label>
+                            <mat-select name="storeRegionSelect" [(ngModel)]="storeCriteria.RegionId" multiple class="form-control">
+                              <mat-option *ngFor="let item of regionList" value={{item.CrmId}}>{{item.Name}}</mat-option>
+                            </mat-select>
+                          </div>
+                        </div>
+                        <div class="col-xl-6">
+
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-xl-3">
+                          <div class="form-group">
+                            <button type="button" class="form-control btn btn-success" (click)="clFilterStore()">Search</button>&nbsp;
+                          </div>
+                        </div>
+                        <div class="col-xl-6">
+
+                        </div>
+                        <div class="col-xl-3">
+                          <div class="form-group">
+                            <button type="button" class="form-control btn btn-primary">Add Selected Items ({{selection.selected.length}})</button>&nbsp;
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <!--Filter Store-->
+                        <div class="col-xl-12">
+                          <div class="example-container mat-elevation-z8">
+                            <mat-table #storeTable [dataSource]="storeDataSource">
+                              <ng-container matColumnDef="select" >
+                                <mat-header-cell *matHeaderCellDef mat-sort-header>
+                                  <mat-checkbox (change)="$event ? masterToggle() : null"
+                                                [checked]="selection.hasValue() && isAllSelected()"
+                                                [indeterminate]="selection.hasValue() && !isAllSelected()">
+                                  </mat-checkbox>
+                                </mat-header-cell>
+                                <mat-cell *matCellDef="let row">
+                                  <mat-checkbox (click)="$event.stopPropagation()"
+                                                (change)="$event ? selection.toggle(row) : null"
+                                                [checked]="selection.isSelected(row)">
+                                  </mat-checkbox>
+                                </mat-cell>
+                              </ng-container>
+                              <ng-container matColumnDef="StoreId">
+                                <mat-header-cell *matHeaderCellDef mat-sort-header> Store Id </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.StoreId}} </mat-cell>
+                              </ng-container>
+                              <ng-container matColumnDef="Name">
+                                <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.Name}} </mat-cell>
+                              </ng-container>
+                              <ng-container matColumnDef="CountryName">
+                                <mat-header-cell *matHeaderCellDef> Country </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.CountryName}} </mat-cell>
+                              </ng-container>
+                              <ng-container matColumnDef="CityName">
+                                <mat-header-cell *matHeaderCellDef> City </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.CityName}} </mat-cell>
+                              </ng-container>
+                              <ng-container matColumnDef="StoreSegmentName">
+                                <mat-header-cell *matHeaderCellDef> Store Segment </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.StoreSegmentName}} </mat-cell>
+                              </ng-container>
+                              <ng-container matColumnDef="StoreGroupName">
+                                <mat-header-cell *matHeaderCellDef> Store Group </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.StoreGroupName}} </mat-cell>
+                              </ng-container>
+                              <ng-container matColumnDef="StoreTypeName">
+                                <mat-header-cell *matHeaderCellDef> Store Type </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.StoreTypeName}} </mat-cell>
+                              </ng-container>
+                              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                              <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                            </mat-table>
+                            <mat-paginator class="pagnacolor" [pageSizeOptions]="[10]" showFirstLastButtons></mat-paginator>
+                          </div>
+                        </div>
+                      </div>
+                    </ng-template>
+                  </ngb-tab>
+                  <!--Add From List with Store Number(ID)-->
+                  <ngb-tab>
+                    <ng-template ngbTabTitle>Add From List</ng-template>
+                    <ng-template ngbTabContent>
+                      <div class="row">
+                        <div class="col-xl-10">
+                          <div class="form-group">
+                            <label>
+                              Store Id(s)
+                            </label>
+                            <input #storeIdFilter name="storeIdFilter" [(ngModel)]="storeIdfilter" placeholder="Please enter store id" class="form-control" />
+                            <span class="form-text text-muted">
+                              Separate with semicolons
+                            </span>
+                          </div>
+                        </div>
+                        <div class="col-xl-2">
+                          <div class="form-group">
+                            <label> &nbsp;</label>
+                            <button name="storeIdFilterButton" type="button" class="form-control btn btn-success" (click)="clFilterStoresById()"><i class="fa fa-search"></i> Search</button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-xl-12">
+                          <div class="example-container mat-elevation-z8">
+                            <mat-table #storeFilterTableById [dataSource]="storeDataSourceById">
+                              <ng-container matColumnDef="select">
+                                <mat-header-cell *matHeaderCellDef>
+                                  <mat-checkbox (change)="$event ? masterToggleById() : null"
+                                                [checked]="selectionById.hasValue() && isAllSelectedById()"
+                                                [indeterminate]="selectionById.hasValue() && !isAllSelectedById()">
+                                  </mat-checkbox>
+                                </mat-header-cell>
+                                <mat-cell *matCellDef="let row">
+                                  <mat-checkbox (click)="$event.stopPropagation()"
+                                                (change)="$event ? selectionById.toggle(row) : null"
+                                                [checked]="selectionById.isSelected(row)">
+                                  </mat-checkbox>
+                                </mat-cell>
+                              </ng-container>
+                              <ng-container matColumnDef="StoreId">
+                                <mat-header-cell *matHeaderCellDef> Store Id </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.StoreId}} </mat-cell>
+                              </ng-container>
+                              <!-- Weight Column -->
+                              <ng-container matColumnDef="Name">
+                                <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.Name}} </mat-cell>
+                              </ng-container>
+                              <ng-container matColumnDef="CountryName">
+                                <mat-header-cell *matHeaderCellDef> Country </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.CountryName}} </mat-cell>
+                              </ng-container>
+                              <ng-container matColumnDef="CityName">
+                                <mat-header-cell *matHeaderCellDef> City </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.CityName}} </mat-cell>
+                              </ng-container>
+                              <ng-container matColumnDef="StoreSegmentName">
+                                <mat-header-cell *matHeaderCellDef> Store Segment </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.StoreSegmentName}} </mat-cell>
+                              </ng-container>
+                              <ng-container matColumnDef="StoreGroupName">
+                                <mat-header-cell *matHeaderCellDef> Store Group </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.StoreGroupName}} </mat-cell>
+                              </ng-container>
+                              <ng-container matColumnDef="StoreTypeName">
+                                <mat-header-cell *matHeaderCellDef> Store Type </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.StoreTypeName}} </mat-cell>
+                              </ng-container>
+                              <mat-header-row *matHeaderRowDef="displayedColumnsById"></mat-header-row>
+                              <mat-row *matRowDef="let row; columns: displayedColumnsById;"></mat-row>
+                            </mat-table>
+                            <mat-paginator #Paginator2 class="pagnacolor" [pageSizeOptions]="[10]" showFirstLastButtons></mat-paginator>
+                          </div>
+                        </div>
+                      </div>
+                    </ng-template>
+                  </ngb-tab>
+                  <!--Add Store From TreeView -->
+                  <ngb-tab>
+                    <ng-template ngbTabTitle>Add From Store(s) Hierarchy</ng-template>
+                    <ng-template ngbTabContent>
+                      <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+                        <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding>
+                          <button mat-icon-button disabled></button>
+                          <mat-checkbox class="checklist-leaf-node"
+                                        [checked]="checklistSelection.isSelected(node)"
+                                        (change)="checklistSelection.toggle(node);">{{node.item}}</mat-checkbox>
+                        </mat-tree-node>
+
+                        <mat-tree-node *matTreeNodeDef="let node; when: hasNoContent" matTreeNodePadding>
+                          <button mat-icon-button disabled></button>
+                          <mat-form-field>
+                            <input matInput #itemValue placeholder="New item...">
+                          </mat-form-field>
+                          <button mat-button (click)="saveNode(node, itemValue.value)">Save</button>
+                        </mat-tree-node>
+
+                        <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>
+                          <button mat-icon-button matTreeNodeToggle
+                                  [attr.aria-label]="'toggle ' + node.name">
+                            <mat-icon class="mat-icon-rtl-mirror">
+                              {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                            </mat-icon>
+                          </button>
+                          <mat-checkbox [checked]="descendantsAllSelected(node)"
+                                        [indeterminate]="descendantsPartiallySelected(node)"
+                                        (change)="todoItemSelectionToggle(node)">{{node.item}}</mat-checkbox>
+                          <!--<button mat-icon-button (click)="addNewItem(node)"><mat-icon>add</mat-icon> </button>-->
+                        </mat-tree-node>
+                      </mat-tree>
+                    </ng-template>
+                  </ngb-tab>
+                  <ngb-tab>
+                    <ng-template ngbTabTitle>Target List</ng-template>
+                    <ng-template ngbTabContent>
+                      <div class=" row">
+                        <div class="col-xl-6">
+                          <div class="form-group">
+                            <label class="form-control btn btn-default btn-file">
+                              Add Target List <input ng2FileSelect accept=".xml" type="file" [uploader]="uploader" style="display: none;">
+                            </label>
+                            <span class="form-text text-muted">Only excel file format (.xlsx)</span>
+                          </div>
+                        </div>
+                      </div>
+                    </ng-template>
+                  </ngb-tab>
+                  <ngb-tab>
+                    <ng-template ngbTabTitle>Exclude Store(s)</ng-template>
+                    <ng-template ngbTabContent>
+                      <div class="row">
+                        <div class="col-xl-10">
+                          <div class="form-group">
+                            <label>
+                              Store Id(s)
+                            </label>
+                            <input #storeIdFilter name="storeExcludeIdfilter" [(ngModel)]="storeExcludeIdfilter" placeholder="Please enter store id" class="form-control" />
+                            <span class="form-text text-muted">
+                              Separate with semicolons
+                            </span>
+                          </div>
+                        </div>
+                        <div class="col-xl-2">
+                          <div class="form-group">
+                            <label> &nbsp;</label>
+                            <button name="storeIdFilterButton" type="button" class="form-control btn btn-success" (click)="clFilterStoresByIdExclude()"><i class="fa fa-search"></i> Search</button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-xl-12">
+                          <div class="example-container mat-elevation-z8">
+                            <mat-table #storeFilterTableByIdExclude [dataSource]="storeDataSourceByIdExclude">
+                              <ng-container matColumnDef="select">
+                                <mat-header-cell *matHeaderCellDef>
+                                  <mat-checkbox (change)="$event ? masterToggleByIdExclude() : null"
+                                                [checked]="selectionById.hasValue() && isAllSelectedByIdExclude()"
+                                                [indeterminate]="selectionByIdExclude.hasValue() && !isAllSelectedByIdExclude()">
+                                  </mat-checkbox>
+                                </mat-header-cell>
+                                <mat-cell *matCellDef="let row">
+                                  <mat-checkbox (click)="$event.stopPropagation()"
+                                                (change)="$event ? selectionByIdExclude.toggle(row) : null"
+                                                [checked]="selectionByIdExclude.isSelected(row)">
+                                  </mat-checkbox>
+                                </mat-cell>
+                              </ng-container>
+                              <ng-container matColumnDef="StoreId">
+                                <mat-header-cell *matHeaderCellDef> Store Id </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.StoreId}} </mat-cell>
+                              </ng-container>
+                              <!-- Weight Column -->
+                              <ng-container matColumnDef="Name">
+                                <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.Name}} </mat-cell>
+                              </ng-container>
+
+                              <ng-container matColumnDef="CountryName">
+                                <mat-header-cell *matHeaderCellDef> Country </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.CountryName}} </mat-cell>
+                              </ng-container>
+
+                              <ng-container matColumnDef="CityName">
+                                <mat-header-cell *matHeaderCellDef> City </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.CityName}} </mat-cell>
+                              </ng-container>
+
+                              <ng-container matColumnDef="StoreSegmentName">
+                                <mat-header-cell *matHeaderCellDef> Store Segment </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.StoreSegmentName}} </mat-cell>
+                              </ng-container>
+
+                              <ng-container matColumnDef="StoreGroupName">
+                                <mat-header-cell *matHeaderCellDef> Store Group </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.StoreGroupName}} </mat-cell>
+                              </ng-container>
+
+                              <ng-container matColumnDef="StoreTypeName">
+                                <mat-header-cell *matHeaderCellDef> Store Type </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.StoreTypeName}} </mat-cell>
+                              </ng-container>
+
+                              <mat-header-row *matHeaderRowDef="displayedColumnsByIdExclude"></mat-header-row>
+                              <mat-row *matRowDef="let row; columns: displayedColumnsByIdExclude"></mat-row>
+
+                            </mat-table>
+                            <mat-paginator #Paginator3 class="pagnacolor" [pageSizeOptions]="[10]" showFirstLastButtons></mat-paginator>
+                          </div>
+                        </div>
+                      </div>
+                    </ng-template>
+                  </ngb-tab>
+                  <!--<ngb-tab title="Disabled" [disabled]="true">
+                    <ng-template ngbTabContent>
+
+                    </ng-template>
+                  </ngb-tab>-->
+                </ngb-tabset>
+              </div>
+            </div>
+            <!--end: Form Wizard Step 3-->
+            <!--begin: Price Strategy-->
+            <div class="pb-5" data-wizard-type="step-content">
+              <!--Selection-->
+              <div class="row">
+                <div class="col-xl-6">
+                  <div class="form-group">
+                    <label> Promo Cluster</label>
+                    <mat-select name="promoCluster" [compareWith]="compareObjects" [(ngModel)]="camp.PromoCluster" class="form-control" (selectionChange)="onPromoClusterChange()">
+                      <mat-option *ngFor="let item of filterPromoClusterList" [value]="item">{{item.Name}}</mat-option>
+                    </mat-select>
+                    <span class="form-text text-muted">Please Select Promo Cluster</span>
+                  </div>
+                </div>
+                <div class="col-xl-6">
+                  <div class="form-group">
+                    <label> Promo Type</label>
+                    <mat-select name="promoType" [compareWith]="compareObjects" [(ngModel)]="camp.PromoType" class="form-control" (selectionChange)="onPromoTypeChange()">
+                      <mat-option *ngFor="let item of filteredPromoTypeList" [value]="item">{{item.Name}}</mat-option>
+                    </mat-select>
+                    <span class="form-text text-muted">Please Select Promo Type</span>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-6">
+                  <div class="form-group">
+                    <label> Promo Group</label>
+                    <mat-select name="promoGroup" [compareWith]="compareObjects" [(ngModel)]="camp.PromoGroup" class="form-control" (selectionChange)="onPromoGroupChange()" [disabled]="disablePromoGroup">
+                      <mat-option *ngFor="let item of filteredPromoGroupList" [value]="item">{{item.Name}}</mat-option>
+                    </mat-select>
+                    <span class="form-text text-muted">Please Select Promo Group</span>
+                  </div>
+                </div>
+                <div class="col-xl-6">
+                  <div class="form-group">
+                    <label> Price Strategy</label>
+                    <mat-select name="priceStrategy" [compareWith]="compareObjects" [(ngModel)]="camp.PriceStrategy" class="form-control" [disabled]="disablePriceStrategy">
+                      <mat-option *ngFor="let item of filteredPriceStrategyList" [value]="item">{{item.Name}}</mat-option>
+                    </mat-select>
+                    <span class="form-text text-muted">Please Select Price Strategy</span>
+                  </div>
+                </div>
+              </div>
+              <!--Bonus Basic / Plus-->
+              <div>
+                <div class="row" [hidden]="hideBnsAccuralPercentageFixedValue">
+                  <div class="col-xl-6">
+                    <div class="form-group">
+                      <label>
+                        Bonus Accrual Percentage (%)
+                      </label>
+                      <input type="number" placeholder="Only Numeric Values" class="form-control" name="bonusAccrualPercentage" [(ngModel)]="camp.BonusAccrualPercentage" />
+                    </div>
+                  </div>
+                  <div class="col-xl-6">
+                    <div class="form-group">
+                      <label>
+                        Bonus Fixed Value
+                      </label>
+                      <input type="number" placeholder="Only Numeric Values" class="form-control" name="bonusFixedValue" [(ngModel)]="camp.BonusFixedValue" />
+                    </div>
+                  </div>
+                </div>
+                <div class="row" [hidden]="hideBonusRedemptionValue">
+                  <div class="col-xl-6">
+                    <div class="form-group">
+                      <label>
+                        Bonus Redemption Value
+                      </label>
+                      <input type="number" placeholder="Only Numeric Values" class="form-control" name=" bonusRedemptionValue" [(ngModel)]="camp.BonusRedemptionValue" />
+                    </div>
+                  </div>
+                </div>
+                <div class="row" [hidden]="hideBonusActivation">
+                  <div class="col-xl-6">
+                    <div class="form-group">
+                      <label>
+                        Bonus Activation
+                      </label>
+                      <mat-select name="bonusActivation" [compareWith]="compareObjects" [(ngModel)]="camp.BonusActivation" class="form-control" (selectionChange)="onBonusActivationChange()">
+                        <mat-option *ngFor="let item of bonusActivationList" [value]="item">{{item.Name}}</mat-option>
+                      </mat-select>
+                      <span class="form-text text-muted">Please Select Bonus Activation Type</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row" [hidden]="hideBonusDeferredTime">
+                  <div class="col-xl-6">
+                    <div class="form-group">
+                      <label>
+                        Bonus Deferred Time
+                      </label>
+                      <div class="input-group">
+                        <ngb-timepicker name="bonusDeferredTime" [(ngModel)]="bonusDeferredTime" [meridian]="true" [spinners]="false"> </ngb-timepicker>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row" [hidden]="hideBonusEveryAfterAccrualProperties">
+                  <div class="col-xl-6">
+                    <div class="form-group">
+                      <label>
+                        Bonus Every After Accrual Month
+                      </label>
+                      <mat-select [compareWith]="compareObjects" name="bonusEveryAfterAccrualMonth" [(ngModel)]="camp.BonusEveryAfterAccrualMonth" multiple class="form-control">
+                        <mat-select-search></mat-select-search>
+                        <mat-option *ngFor="let item of bonusEveryAfterAccrualMonthList" [value]="item">{{item.Name}}</mat-option>
+                      </mat-select>
+                      <span class="form-text text-muted">Please Select Bonus Every After Accrual Month</span>
+                    </div>
+                  </div>
+                  <div class="col-xl-6">
+                    <div class="form-group">
+                      <label>
+                        Bonus Every After Accrual Month
+                      </label>
+                      <mat-select [compareWith]="compareObjects" name="bonusEveryAfterAccrualWeek" [(ngModel)]="camp.BonusEveryAfterAccrualWeek" multiple class="form-control">
+                        <mat-select-search></mat-select-search>
+                        <mat-option *ngFor="let item of bonusEveryAfterAccuralWeekList" [value]="item">{{item.Name}}</mat-option>
+                      </mat-select>
+                      <span class="form-text text-muted">Bonus Every After Accrual Week</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row" [hidden]="hideBonusEveryAfterAccrualProperties">
+                  <div class="col-xl-6">
+                    <div class="form-group">
+                      <label>
+                        Bonus Every After Accrual Day
+                      </label>
+                      <mat-select [compareWith]="compareObjects" name="bonusEveryAfterAccrualDay" [(ngModel)]="camp.BonusEveryAfterAccrualDay" multiple class="form-control">
+                        <mat-select-search></mat-select-search>
+                        <mat-option *ngFor="let item of bonusEveryAfterAccuralDayList" [value]="item">{{item.Name}}</mat-option>
+                      </mat-select>
+                      <span class="form-text text-muted">Bonus Every After Accrual Day</span>
+                    </div>
+                  </div>
+                  <div class="col-xl-6">
+                    <div class="form-group">
+                      <label>
+                        Bonus Every After Accrual Time
+                      </label>
+                      <ngb-timepicker name="bonusDeferredTime" [(ngModel)]="bonusEveryAfterAccrualTime" [meridian]="true" [spinners]="false"> </ngb-timepicker>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row" [hidden]="hideBonusExpiration">
+                  <div class="col-xl-6">
+                    <div class="form-group">
+                      <label>
+                        Bonus Expiration
+                      </label>
+                      <mat-select [compareWith]="compareObjects" name="bonusExpiration" [(ngModel)]="camp.BonusExpiration" class="form-control" (selectionChange)="onBonusExpirationChange()">
+                        <mat-option *ngFor="let item of bonusExpirationList" [value]="item">{{item.Name}}</mat-option>
+                      </mat-select>
+                      <span class="form-text text-muted">Please Select Bonus Expiration</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row" [hidden]="hideBonusExpirationType">
+                  <div class="col-xl-6">
+                    <div class="form-group">
+                      <label>
+                        Bonus Expiration Type
+                      </label>
+                      <mat-select [compareWith]="compareObjects" name="bonusExpirationType" [(ngModel)]="camp.BonusExpirationType" class="form-control">
+                        <mat-option *ngFor="let item of bonusExpirationTypeList" [value]="item">{{item.Name}}</mat-option>
+                      </mat-select>
+                      <span class="form-text text-muted">Please Select Bonus Expiration Type</span>
+                    </div>
+                  </div>
+
+                  <div class="col-xl-6">
+                    <div class="form-group">
+                      <label>Bonus Expiration Value</label>
+                      <input type="number" placeholder="Only Numeric Values" class="form-control" name="bonusExpirationValue" [(ngModel)]="camp.BonusExpirationValue" />
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!--Cashback Basic / Plus-->
+              <div>
+                <div class="row" [hidden]="hideCashBackAccrualProperties">
+                  <div class="col-xl-6">
+                    <div class="form-group">
+                      <label>
+                        CashBack Accrual Percentage (%)
+                      </label>
+                      <input type="number" placeholder="Only Numeric Values" class="form-control" name="cashBackAccrualPercentage" [(ngModel)]="camp.CashBackAccrualPercentage" />
+                    </div>
+                  </div>
+                  <div class="col-xl-6">
+                    <div class="form-group">
+                      <label>
+                        CashBack Fixed Value
+                      </label>
+                      <input type="number" placeholder="Only Numeric Values" class="form-control" name="cashBackFixedValue" [(ngModel)]="camp.CashBackFixedValue" />
+                    </div>
+                  </div>
+                </div>
+                <div class="row" [hidden]="hideCashBackActivation">
+                  <div class="col-xl-6">
+                    <div class="form-group">
+                      <label>
+                        CashBack Activation
+                      </label>
+                      <mat-select [compareWith]="compareObjects" name="cashBackActivation" [(ngModel)]="camp.CashBackActivation" class="form-control" (selectionChange)="onCashActivationChange()">
+                        <mat-option *ngFor="let item of cashBackActivationList" [value]="item">{{item.Name}}</mat-option>
+                      </mat-select>
+                      <span class="form-text text-muted">Please Select CashBack Activation Type</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row" [hidden]="hideCashBackDeferredTime">
+                  <div class="col-xl-6">
+                    <div class="form-group">
+                      <label>
+                        CashBack Deferred Time
+                      </label>
+                      <div class="input-group">
+                        <ngb-timepicker name="cashBackDeferredTime" [(ngModel)]="cashBackDeferredTime" [meridian]="true" [spinners]="false"> </ngb-timepicker>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row" [hidden]="hideCashBackEveryAfterAccrualProperties">
+                  <div class="col-xl-6">
+                    <div class="form-group">
+                      <label>
+                        CashBack Every After Accrual Month
+                      </label>
+                      <mat-select [compareWith]="compareObjects" name="cashBackEveryAfterAccrualMonth" [(ngModel)]="camp.CashBackEveryAfterAccrualMonth" multiple class="form-control">
+                        <mat-select-search></mat-select-search>
+                        <mat-option *ngFor="let item of cashBackEveryAfterAccrualMonthList" [value]="item">{{item.Name}}</mat-option>
+                      </mat-select>
+                      <span class="form-text text-muted">Please Select CashBack Every After Accrual Month</span>
+                    </div>
+                  </div>
+                  <div class="col-xl-6">
+                    <div class="form-group">
+                      <label>
+                        CashBack Every After Accrual Month
+                      </label>
+                      <mat-select [compareWith]="compareObjects" name="cashBackEveryAfterAccrualWeek" [(ngModel)]="camp.CashBackEveryAfterAccrualWeek" multiple class="form-control">
+                        <mat-select-search></mat-select-search>
+                        <mat-option *ngFor="let item of cashBackEveryAfterAccuralWeekList" [value]="item">{{item.Name}}</mat-option>
+                      </mat-select>
+                      <span class="form-text text-muted">Please Select CashBack Every After Accrual Week</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row" [hidden]="hideCashBackEveryAfterAccrualProperties">
+                  <div class="col-xl-6">
+                    <div class="form-group">
+                      <label>
+                        CashBack Every After Accrual Day
+                      </label>
+                      <mat-select [compareWith]="compareObjects" name="cashBackEveryAfterAccrualDay" [(ngModel)]="camp.CashBackEveryAfterAccrualDay" multiple class="form-control">
+                        <mat-select-search></mat-select-search>
+                        <mat-option *ngFor="let item of cashBackEveryAfterAccuralDayList" [value]="item">{{item.Name}}</mat-option>
+                      </mat-select>
+                      <span class="form-text text-muted">Please Select CashBack Every After Accrual Day</span>
+                    </div>
+                  </div>
+                  <div class="col-xl-6">
+                    <div class="form-group">
+                      <label>
+                        CashBack Every After Accrual Time
+                      </label>
+                      <ngb-timepicker name="cashBackDeferredTime" [(ngModel)]="cashBackEveryAfterAccrualTime" [meridian]="true" [spinners]="false"> </ngb-timepicker>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!--Product Selection-->
+              <div class="row" [hidden]="hideProductSelection">
+                <div class="col-xl-12">
+                  <br />
+                  <div class="container">
+                    <ngb-tabset [destroyOnHide]="false">
+                      <ngb-tab title="Add From List">
+                        <ng-template ngbTabContent>
+                          <div class="row">
+                            <div class="col-xl-10">
+                              <div class="form-group">
+                                <label>
+                                  Product Id(s)
+                                </label>
+                                <input #storeIdFilter name="productIdFilter" [(ngModel)]="productIdfilter" placeholder="Please enter store id" class="form-control" />
+                                <span class="form-text text-muted">
+                                  Separate with semicolons
+                                </span>
+                              </div>
+                            </div>
+                            <div class="col-xl-2">
+                              <div class="form-group">
+                                <label> &nbsp;</label>
+                                <button name="productIdFilterButton" type="button" class="form-control btn btn-success" (click)="clFilterProductsById()"><i class="fa fa-search"></i> Search</button>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-xl-12">
+                              <div class="example-container mat-elevation-z8">
+                                <mat-table #productFilterTableById [dataSource]="productDataSourceById">
+                                  <ng-container matColumnDef="select">
+                                    <mat-header-cell *matHeaderCellDef>
+                                      <mat-checkbox (change)="$event ? productMasterToggleById() : null"
+                                                    [checked]="productSelectionById.hasValue() && isAllProductSelectedById()"
+                                                    [indeterminate]="productSelectionById.hasValue() && !isAllProductSelectedById()">
+                                      </mat-checkbox>
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let row">
+                                      <mat-checkbox (click)="$event.stopPropagation()"
+                                                    (change)="$event ? productSelectionById.toggle(row) : null"
+                                                    [checked]="productSelectionById.isSelected(row)">
+                                      </mat-checkbox>
+                                    </mat-cell>
+                                  </ng-container>
+                                  <ng-container matColumnDef="ProductCode">
+                                    <mat-header-cell *matHeaderCellDef> Product Code </mat-header-cell>
+                                    <mat-cell *matCellDef="let element"> {{element.ProductCode}} </mat-cell>
+                                  </ng-container>
+                                  <!-- Weight Column -->
+                                  <ng-container matColumnDef="Name">
+                                    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+                                    <mat-cell *matCellDef="let element"> {{element.Name}} </mat-cell>
+                                  </ng-container>
+                                  <mat-header-row *matHeaderRowDef="productDisplayedColumnsById"></mat-header-row>
+                                  <mat-row *matRowDef="let row; columns: productDisplayedColumnsById;"></mat-row>
+                                </mat-table>
+                                <mat-paginator #Paginator4 class="pagnacolor" [pageSizeOptions]="[10]" showFirstLastButtons></mat-paginator>
+                              </div>
+                            </div>
+                          </div>
+                        </ng-template>
+                      </ngb-tab>
+                      <ngb-tab title="Add From Product Hiyerarchy">
+                        <ng-template ngbTabContent>
+
+                          <mat-tree [dataSource]="productTreeDataSource" [treeControl]="productTreeControl">
+                            <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding>
+                              <button mat-icon-button disabled></button>
+                              <mat-checkbox class="checklist-leaf-node"
+                                            [checked]="productChecklistSelection.isSelected(node)"
+                                            (change)="productChecklistSelection.toggle(node);">{{node.item}}</mat-checkbox>
+                            </mat-tree-node>
+
+                            <mat-tree-node *matTreeNodeDef="let node; when: hasNoContent" matTreeNodePadding>
+                              <button mat-icon-button disabled></button>
+                              <mat-form-field>
+                                <input matInput #itemValue placeholder="New item...">
+                              </mat-form-field>
+                              <button mat-button (click)="saveNode(node, itemValue.value)">Save</button>
+                            </mat-tree-node>
+
+                            <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>
+                              <button mat-icon-button matTreeNodeToggle
+                                      [attr.aria-label]="'toggle ' + node.name">
+                                <mat-icon class="mat-icon-rtl-mirror">
+                                  {{productTreeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                                </mat-icon>
+                              </button>
+                              <mat-checkbox [checked]="productDescendantsAllSelected(node)"
+                                            [indeterminate]="productDescendantsPartiallySelected(node)"
+                                            (change)="productTodoItemSelectionToggle(node)">{{node.item}}</mat-checkbox>
+                              <!--<button mat-icon-button (click)="addNewItem(node)"><mat-icon>add</mat-icon> </button>-->
+                            </mat-tree-node>
+                          </mat-tree>
+
+
+                        </ng-template>
+                      </ngb-tab>
+                      <ngb-tab title="Upload List">
+                        <ng-template ngbTabContent>
+                          <div class=" row">
+                            <div class="col-xl-6">
+                              <div class="form-group">
+                                <label class="form-control btn btn-default btn-file">
+                                  Add Target List <input ng2FileSelect accept=".xml" type="file" [uploader]="uploader" style="display: none;">
+                                </label>
+                                <span class="form-text text-muted">Only excel file format (.xlsx)</span>
+                              </div>
+                            </div>
+                          </div>
+                        </ng-template>
+                      </ngb-tab>
+                      <ngb-tab title="Exclude Product">
+                        <ng-template ngbTabContent>
+                          <div class="row">
+                            <div class="col-xl-10">
+                              <div class="form-group">
+                                <label>
+                                  Product Id(s)
+                                </label>
+                                <input #storeIdFilter name="productExcludeIdfilter" [(ngModel)]="productExcludeIdfilter" placeholder="Please enter store id" class="form-control" />
+                                <span class="form-text text-muted">
+                                  Separate with semicolons
+                                </span>
+                              </div>
+                            </div>
+                            <div class="col-xl-2">
+                              <div class="form-group">
+                                <label> &nbsp;</label>
+                                <button name="productExcludeIdFilterButton" type="button" class="form-control btn btn-success" (click)="clFilterProductsByIdExclude()"><i class="fa fa-search"></i> Search</button>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-xl-12">
+                              <div class="example-container mat-elevation-z8">
+                                <mat-table #productFilterTableByIdExclude [dataSource]="productDataSourceByIdExclude">
+                                  <ng-container matColumnDef="select">
+                                    <mat-header-cell *matHeaderCellDef>
+                                      <mat-checkbox (change)="$event ? productMasterToggleByIdExclude() : null"
+                                                    [checked]="productSelectionByIdExclude.hasValue() && isAllProductSelectedByIdExclude()"
+                                                    [indeterminate]="productSelectionByIdExclude.hasValue() && !isAllProductSelectedByIdExclude()">
+                                      </mat-checkbox>
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let row">
+                                      <mat-checkbox (click)="$event.stopPropagation()"
+                                                    (change)="$event ? productSelectionByIdExclude.toggle(row) : null"
+                                                    [checked]="productSelectionByIdExclude.isSelected(row)">
+                                      </mat-checkbox>
+                                    </mat-cell>
+                                  </ng-container>
+                                  <ng-container matColumnDef="ProductCode">
+                                    <mat-header-cell *matHeaderCellDef> Product Code </mat-header-cell>
+                                    <mat-cell *matCellDef="let element"> {{element.ProductCode}} </mat-cell>
+                                  </ng-container>
+                                  <ng-container matColumnDef="Name">
+                                    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+                                    <mat-cell *matCellDef="let element"> {{element.Name}} </mat-cell>
+                                  </ng-container>
+                                  <mat-header-row *matHeaderRowDef="productDisplayedColumnsById"></mat-header-row>
+                                  <mat-row *matRowDef="let row; columns: productDisplayedColumnsById;"></mat-row>
+                                </mat-table>
+                                <mat-paginator #Paginator4 class="pagnacolor" [pageSizeOptions]="[10]" showFirstLastButtons></mat-paginator>
+                              </div>
+                            </div>
+                          </div>
+                        </ng-template>
+                      </ngb-tab>
+                    </ngb-tabset>
+                  </div>
+                </div>
+              </div>
+
+              <!--Price Cluster Items-->
+              <div class="row" [hidden]="hideClusterItem">
+                <div class="col-xl-12">
+                  <br />
+                  <div class="table-responsive">
+                    <table class="table table-head-custom table-head-bg table-borderless table-vertical-center">
+                      <thead>
+                        <tr class="text-left text-uppercase">
+                          <th class="text-dark-75" style="min-width: 50px;" colspan="5">Price Cluster Items</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <input type="number" placeholder=" Min Spending" class="form-control" name="a.MinSpending" [(ngModel)]="clusterItemDefination.MinSpending" />
+                            <span class="form-text text-muted">
+                              Only numeric values
+                            </span>
+                          </td>
+                          <td>
+                            <input type="number" placeholder="Max Spending" class="form-control" name="a.PercentOff" [(ngModel)]="clusterItemDefination.MaxSpending" />
+                            <span class="form-text text-muted">
+                              Only numeric values
+                            </span>
+                          </td>
+                          <td>
+                            <!--<input type="number" placeholder="Amount Off (€)" class="form-control" name="a.PercentOff" [(ngModel)]="clusterItemDefination.AmountOff" />-->
+                            <input currencyMask class="form-control" [options]="{ prefix: '€ ', thousands: '.', decimal: ',' }" placeholder="Amount Off (€)" [(ngModel)]="clusterItemDefination.AmountOff" name="a.AmountOff" />
+                            <span class="form-text text-muted">
+                              Only numeric values
+                            </span>
+                          </td>
+                          <td>
+                            <input type="number" placeholder="Percent Off (%)" class="form-control" name="a.PercentOff" [(ngModel)]="clusterItemDefination.PercentOff" />
+                            <span class="form-text text-muted">
+                              Only numeric values
+                            </span>
+                          </td>
+                          <td>
+                            <button type="button" class="form-control btn btn-success font-weight-bolder font-size-sm cursor-pointer" (click)="addClusterItem()">
+                              Add
+                            </button>
+                            <span class="text-muted">
+                              &nbsp;
+                            </span>
+                          </td>
+                        </tr>
+                        <ng-container *ngFor="let item of camp.ClusterItems">
+                          <tr>
+                            <td>
+                              <span class="text-dark-75 font-weight-bolder d-block font-size-lg">
+                                {{item.MinSpending}}
+                              </span>
+                            </td>
+                            <td>
+                              <span class="text-dark-75 font-weight-bolder d-block font-size-lg">
+                                {{item.MaxSpending}}
+                              </span>
+                            </td>
+                            <td>
+                              <span class="text-dark-75 font-weight-bolder d-block font-size-lg">
+                                {{item.AmountOff}}
+                              </span>
+                            </td>
+                            <td>
+                              <span class="text-dark-75 font-weight-bolder d-block font-size-lg">
+                                {{item.PercentOff}}
+                              </span>
+                            </td>
+                            <td>
+                              <button type="button" class="form-control btn btn-danger font-weight-bolder font-size-sm cursor-pointer" (click)="deleteClusterItem(item.ItemId)">
+                                Delete
+                              </button>
+                            </td>
+                          </tr>
+                        </ng-container>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <br />
+              </div>
+
+              <!--Allow Repeat Action-->
+              <div class="row" [hidden]="hideAllowRepeatAction">
+                <div class="col-xl-12">
+                  <div class="form-group">
+
+                    <mat-checkbox [(NgModel)]="camp.AllowRepeatAction">
+                      Allow Repeat Action
+                    </mat-checkbox>
+                  </div>
+                </div>
+              </div>
+
+              <!--Pruchase Story-->
+              <div class="row" [hidden]="hidePurchaseHistory">
+                <div class="col-xl-6">
+                  <div class="form-group">
+                    <label>Purchase History</label>
+                    <mat-select name="purchaseHistory" [(ngModel)]="camp.PurchaseHistoryType" class="form-control" (selectionChange)="onPurchaseHistoryTypeChange()">
+                      <mat-option></mat-option>
+                      <mat-option *ngFor="let item of purchaseHistoryList" [value]="item">{{item.Name}}</mat-option>
+                    </mat-select>
+                    <span class="form-text text-muted">Please Select Purchase History</span>
+                  </div>
+                </div>
+                <div class="col-xl-6"  [hidden]="hidePurchaseHistoryValue">
+                  <div class="form-group">
+                    <label>Purchase History Value</label>
+                    <input type="number" placeholder="Only Numeric Values" class="form-control" name="puchaseHistory" [(ngModel)]="camp.PurchaseHistoryValue" />
+                  </div>
+                </div>
+              </div>
+
+              <!--Amount Equal Type-->
+              <div class="row" [hidden]="hideAmountEqualType">
+                <div class="col-xl-6">
+                  <div class="form-group">
+                    <label>Amount Equal Type</label>
+                    <mat-select name="amountEqualType" [(ngModel)]="camp.AmountEqualType" class="form-control" (selectionChange)="onAmountEqualTypeChange()">
+                      <mat-option></mat-option>
+                      <mat-option *ngFor="let item of amountEqualTypeList" [value]="item">{{item.Name}}</mat-option>
+                    </mat-select>
+                    <span class="form-text text-muted">Please Select Purchase History</span>
+                  </div>
+                </div>
+                <div class="col-xl-6" [hidden]="hideAmountEqualValue">
+                  <div class="form-group">
+                    <label>Amount Equal Value</label>
+                    <input type="number" placeholder="Only Numeric Values" class="form-control" name="puchaseHistory" [(ngModel)]="camp.AmountEqualValue" />
+                  </div>
+                </div>
+
+                <div class="col-xl-3" [hidden]="hideBetweenAmountEqualValue">
+                  <div class="form-group">
+                    <label>Min Amount Value</label>
+                    <input type="number" placeholder="Only Numeric Values" class="form-control" name="puchaseHistory" [(ngModel)]="camp.MinAmountValue" />
+                  </div>
+                </div>
+
+                <div class="col-xl-3" [hidden]="hideBetweenAmountEqualValue">
+                  <div class="form-group">
+                    <label>Max Amount Value</label>
+                    <input type="number" placeholder="Only Numeric Values" class="form-control" name="puchaseHistory" [(ngModel)]="camp.MaxAmountValue" />
+                  </div>
+                </div>
+              </div>
+
+              <!--Quantity Defination List-->
+              <div class="row" [hidden]="hideQuantityDefination">
+                <div class="col-xl-12">
+                  <!--begin::Table-->
+                  <div class="table-responsive">
+                    <table class="table table-head-custom table-head-bg table-borderless table-vertical-center">
+                      <thead>
+                        <!--<tr>
+                          <th style="min-width: 250px;" class="pl-7" colspan="3">
+                            <span class="text-dark-75">Defination</span>
+                          </th>
+                        </tr>-->
+                        <tr class="text-left text-uppercase">
+                          <!--<th style="min-width: 250px;" class="pl-7">
+                            <span class="text-dark-75">products</span>
+                          </th>-->
+                          <!--<th class="text-dark-75" style="min-width: 100px;" >quantity</th>
+                          <th class="text-dark-75" style="min-width: 100px;">Value</th>
+                          <th class="text-dark-75" style="min-width: 80px;"></th>-->
+                          <th class="text-dark-75" style="min-width: 100px;" colspan="3">Definations</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <input type="number" placeholder="Quantity" class="form-control" name="c.Quantity" [(ngModel)]="clusterItemDefination.Quantity" />
+                            <span class="form-text text-muted">
+                              Only numeric values
+                            </span>
+                          </td>
+                          <td>
+                            <input type="number" placeholder="Value" class="form-control" name="c.Value" [(ngModel)]="clusterItemDefination.Value" />
+                            <span class="form-text text-muted">
+                              Only numeric values
+                            </span>
+                          </td>
+                          <td>
+                            <button type="button" class="form-control btn btn-success font-weight-bolder font-size-sm cursor-pointer" (click)="addQuantityDefination()">
+                              Add Item
+                            </button>
+                            <span class="text-muted">
+                              &nbsp;
+                            </span>
+                          </td>
+                        </tr>
+                        <ng-container *ngFor="let item of camp.ClusterItems">
+                          <tr>
+                            <td>
+                              <span class="text-dark-75 font-weight-bolder d-block font-size-lg">
+                                {{item.Quantity}}
+                              </span>
+                              <!--<span class="text-muted font-weight-bold">Quantity</span>-->
+                            </td>
+                            <td>
+                              <span class="text-dark-75 font-weight-bolder d-block font-size-lg">
+                                {{item.Value}}
+                              </span>
+                              <!--<span class="text-muted font-weight-bold"> Value</span>-->
+                            </td>
+                            <td>
+                              <button type="button" class="form-control btn btn-danger font-weight-bolder font-size-sm cursor-pointer" (click)="deleteClusterItem(item.ItemId)">
+                                Delete
+                              </button>
+                            </td>
+                          </tr>
+                        </ng-container>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!--end::Table-->
+                </div>
+              </div>
+
+              <!--Buy X Get Y with Product-->
+              <div class="row" [hidden]="hideProductItemDefination">
+                <br />
+
+                <div class="col-xl-12">
+                  <div class="table-responsive">
+                    <div class="table-responsive">
+                      <table class="table table-head-custom table-head-bg table-borderless table-vertical-center">
+                        <thead>
+                          <tr class="text-left text-uppercase">
+                            <th class="text-dark-75" style="min-width: 50px;" colspan="6">Definations</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              <input type="number" placeholder=" Min Quantity" class="form-control" name="d.MinQuantity" [(ngModel)]="clusterItemDefination.MinQuantity" />
+                              <span class="form-text text-muted">
+                                Only numeric values
+                              </span>
+                            </td>
+                            <td>
+                              <input type="number" placeholder="Max Quantity" class="form-control" name="d.MaxQuantity" [(ngModel)]="clusterItemDefination.MaxQuantity" />
+                              <span class="form-text text-muted">
+                                Only numeric values
+                              </span>
+                            </td>
+                            <td>
+                              <input type="number" placeholder="Item Quantity" class="form-control" name="d.ItemQuantity" [(ngModel)]="clusterItemDefination.ItemQuantity" />
+                              <span class="form-text text-muted">
+                                Only numeric values
+                              </span>
+                            </td>
+                            <td>
+                              <input type="text" placeholder="Products" class="form-control" name="d.Products" [(ngModel)]="clusterItemDefination.Products" />
+                              <span class="form-text text-muted">
+                                Separate with semicolons
+                              </span>
+                            </td>
+                            <td>
+                              <input type="number" placeholder="Value(%)" class="form-control" name="d.Value" [(ngModel)]="clusterItemDefination.Value" />
+                              <span class="form-text text-muted">
+                                Only numeric values
+                              </span>
+                            </td>
+                            <td>
+                              <button type="button" class="form-control btn btn-success font-weight-bolder font-size-sm cursor-pointer" (click)="addProductClusterItem()">
+                                Add
+                              </button>
+                              <span class="text-muted">
+                                &nbsp;
+                              </span>
+                            </td>
+                          </tr>
+                          <ng-container *ngFor="let item of camp.ClusterItems">
+                            <tr>
+                              <td>
+                                <span class="text-dark-75 font-weight-bolder d-block font-size-lg">
+                                  {{item.MinQuantity}}
+                                </span>
+                              </td>
+                              <td>
+                                <span class="text-dark-75 font-weight-bolder d-block font-size-lg">
+                                  {{item.MaxQuantity}}
+                                </span>
+                              </td>
+                              <td>
+                                <span class="text-dark-75 font-weight-bolder d-block font-size-lg">
+                                  {{item.ItemQuantity}}
+                                </span>
+                              </td>
+                              <td>
+                                <span class="text-dark-75 font-weight-bolder d-block font-size-lg">
+                                  {{item.Products}}
+                                </span>
+                              </td>
+                              <td>
+                                <span class="text-dark-75 font-weight-bolder d-block font-size-lg">
+                                  {{item.Value}}
+                                </span>
+                              </td>
+                              <td>
+                                <button type="button" class="form-control btn btn-danger font-weight-bolder font-size-sm cursor-pointer" (click)="deleteClusterItem(item.ItemId)">
+                                  Delete
+                                </button>
+                              </td>
+                            </tr>
+                          </ng-container>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!--Bulk / Tired Discount-->
+              <div class="row" [hidden]="hideDiscountItems">
+                <br />
+                <div class="col-xl-12">
+                  <div class="table-responsive">
+                    <div class="table-responsive">
+                      <table class="table table-head-custom table-head-bg table-borderless table-vertical-center">
+                        <thead>
+                          <tr class="text-left text-uppercase">
+                            <th class="text-dark-75" style="min-width: 50px;" colspan="6">Definations</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              <input type="number" placeholder=" Min Quantity" class="form-control" name="f.MinQuantity" [(ngModel)]="clusterItemDefination.MinQuantity" />
+                              <span class="form-text text-muted">
+                                Only numeric values
+                              </span>
+                            </td>
+                            <td>
+                              <input type="number" placeholder="Max Quantity" class="form-control" name="f.MaxQuantity" [(ngModel)]="clusterItemDefination.MaxQuantity" />
+                              <span class="form-text text-muted">
+                                Only numeric values
+                              </span>
+                            </td>
+                            <td>
+                              <input type="number" placeholder="{{showPercentage('Value')}}" class="form-control" name="f.Value" [(ngModel)]="clusterItemDefination.Value" />
+                              <span class="form-text text-muted">
+                                Only numeric values
+                              </span>
+                            </td>
+                            <td>
+                              <button type="button" class="form-control btn btn-success font-weight-bolder font-size-sm cursor-pointer" (click)="addQuantityValueDefination()">
+                                Add
+                              </button>
+                              <span class="text-muted">
+                                &nbsp;
+                              </span>
+                            </td>
+                          </tr>
+                          <ng-container *ngFor="let item of camp.ClusterItems">
+                            <tr>
+                              <td>
+                                <span class="text-dark-75 font-weight-bolder d-block font-size-lg">
+                                  {{item.MinQuantity}}
+                                </span>
+                              </td>
+                              <td>
+                                <span class="text-dark-75 font-weight-bolder d-block font-size-lg">
+                                  {{item.MaxQuantity}}
+                                </span>
+                              </td>
+                              <td>
+                                <span class="text-dark-75 font-weight-bolder d-block font-size-lg">
+                                  {{item.Value}}
+                                </span>
+                              </td>
+                              <td>
+                                <button type="button" class="form-control btn btn-danger font-weight-bolder font-size-sm cursor-pointer" (click)="deleteClusterItem(item.ItemId)">
+                                  Delete
+                                </button>
+                              </td>
+                            </tr>
+                          </ng-container>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!--Bogo Same Product-->
+              <div class="row" [hidden]="hideBogoSameProduct">
+                <br />
+                <div class="col-xl-12">
+                  <div class="table-responsive">
+                    <div class="table-responsive">
+                      <table class="table table-head-custom table-head-bg table-borderless table-vertical-center">
+                        <thead>
+                          <tr class="text-left text-uppercase">
+                            <th class="text-dark-75" style="min-width: 50px;" colspan="6">Definations</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              <input type="number" placeholder=" Min Spending" class="form-control" name="t.MinQuantity" [(ngModel)]="clusterItemDefination.MinQuantity" />
+                              <span class="form-text text-muted">
+                                Only numeric values
+                              </span>
+                            </td>
+                            <td>
+                              <input type="number" placeholder="Max Spending" class="form-control" name="t.MaxQuantity" [(ngModel)]="clusterItemDefination.MaxQuantity" />
+                              <span class="form-text text-muted">
+                                Only numeric values
+                              </span>
+                            </td>
+
+                            <td>
+                              <input type="number" placeholder="Free Quantity" class="form-control" name="t.FreeQuantity" [(ngModel)]="clusterItemDefination.FreeQuantity" />
+                              <span class="form-text text-muted">
+                                Only numeric values
+                              </span>
+                            </td>
+                            <td>
+                              <input type="number" placeholder="{{showPercentage('Value')}}" class="form-control" name="t.Value" [(ngModel)]="clusterItemDefination.Value" />
+                              <span class="form-text text-muted">
+                                Only numeric values
+                              </span>
+                            </td>
+                            <td>
+                              <button type="button" class="form-control btn btn-success font-weight-bolder font-size-sm cursor-pointer" (click)="addBogoSameProduct()">
+                                Add
+                              </button>
+                              <span class="text-muted">
+                                &nbsp;
+                              </span>
+                            </td>
+                          </tr>
+                          <ng-container *ngFor="let item of camp.ClusterItems">
+                            <tr>
+                              <td>
+                                <span class="text-dark-75 font-weight-bolder d-block font-size-lg">
+                                  {{item.MinQuantity}}
+                                </span>
+                              </td>
+                              <td>
+                                <span class="text-dark-75 font-weight-bolder d-block font-size-lg">
+                                  {{item.MaxQuantity}}
+                                </span>
+                              </td>
+                              <td>
+                                <span class="text-dark-75 font-weight-bolder d-block font-size-lg">
+                                  {{item.FreeQuantity}}
+                                </span>
+                              </td>
+                              <td>
+                                <span class="text-dark-75 font-weight-bolder d-block font-size-lg">
+                                  {{item.Value}}
+                                </span>
+                              </td>
+                              <td>
+                                <button type="button" class="form-control btn btn-danger font-weight-bolder font-size-sm cursor-pointer" (click)="deleteClusterItem(item.ItemId)">
+                                  Delete
+                                </button>
+                              </td>
+                            </tr>
+                          </ng-container>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!--Bogo Category Discount-->
+              <div class="row" [hidden]="hideBogoCategoryDiscount">
+                <br />
+                <div class="col-xl-12">
+                  <div class="table-responsive">
+                    <div class="table-responsive">
+                      <table class="table table-head-custom table-head-bg table-borderless table-vertical-center">
+                        <thead>
+                          <tr class="text-left text-uppercase">
+                            <th class="text-dark-75" style="min-width: 50px;" colspan="6">Definations</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              <input type="number" placeholder=" Min Spending" class="form-control" name="g.MinQuantity" [(ngModel)]="clusterItemDefination.MinQuantity" />
+                              <span class="form-text text-muted">
+                                Only numeric values
+                              </span>
+                            </td>
+                            <td>
+                              <input type="number" placeholder="Max Spending" class="form-control" name="g.MaxQuantity" [(ngModel)]="clusterItemDefination.MaxQuantity" />
+                              <span class="form-text text-muted">
+                                Only numeric values
+                              </span>
+                            </td>
+
+                            <td>
+                              <input type="number" placeholder="Item Quantity" class="form-control" name="g.ItemQuantity" [(ngModel)]="clusterItemDefination.ItemQuantity" />
+                              <span class="form-text text-muted">
+                                Only numeric values
+                              </span>
+                            </td>
+
+                            <td>
+                              <input type="text" placeholder="Product Category(ies)" class="form-control" name="g.ProductCategories" [(ngModel)]="clusterItemDefination.ProductCategories" />
+                              <span class="form-text text-muted">
+                                Only numeric values
+                              </span>
+                            </td>
+
+                            <td>
+                              <input type="number" placeholder="{{showPercentage('Value')}}" class="form-control" name="g.Value" [(ngModel)]="clusterItemDefination.Value" />
+                              <span class="form-text text-muted">
+                                Only numeric values
+                              </span>
+                            </td>
+                            <td>
+                              <button type="button" class="form-control btn btn-success font-weight-bolder font-size-sm cursor-pointer" (click)="addProductCategory()">
+                                Add
+                              </button>
+                              <span class="text-muted">
+                                &nbsp;
+                              </span>
+                            </td>
+                          </tr>
+                          <ng-container *ngFor="let item of camp.ClusterItems">
+                            <tr>
+                              <td>
+                                <span class="text-dark-75 font-weight-bolder d-block font-size-lg">
+                                  {{item.MinQuantity}}
+                                </span>
+                              </td>
+                              <td>
+                                <span class="text-dark-75 font-weight-bolder d-block font-size-lg">
+                                  {{item.MaxQuantity}}
+                                </span>
+                              </td>
+                              <td>
+                                <span class="text-dark-75 font-weight-bolder d-block font-size-lg">
+                                  {{item.ItemQuantity}}
+                                </span>
+                              </td>
+                              <td>
+                                <span class="text-dark-75 font-weight-bolder d-block font-size-lg">
+                                  {{item.ProductCategory}}
+                                </span>
+                              </td>
+                              <td>
+                                <span class="text-dark-75 font-weight-bolder d-block font-size-lg">
+                                  {{item.Value}}
+                                </span>
+                              </td>
+                              <td>
+                                <button type="button" class="form-control btn btn-danger font-weight-bolder font-size-sm cursor-pointer" (click)="deleteClusterItem(item.ItemId)">
+                                  Delete
+                                </button>
+                              </td>
+                            </tr>
+                          </ng-container>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <!--end: Form Wizard Step 4-->
+            <!--begin: Form Wizard Step 5-->
+            <div class="pb-5" data-wizard-type="step-content">
+              <div class="container">
+                <ngb-tabset [destroyOnHide]="false">
+                  <ngb-tab title="Part 1">
+                    <ng-template ngbTabContent>
+                      <div class="row">
+                        <div class="col-xl-4">
+                          <div class="form-group">
+                            <label>
+                              Order
+                            </label>
+                            <input type="number" plac class="form-control" name="part1.order" [(ngModel)]="camp.Order" placeholder="Only Numeric Values" />
+                            <span class="form-text text-muted">Please Enter Order Value</span>
+                          </div>
+                        </div>
+                        <div class="col-xl-4">
+                          <div class="form-group">
+                            <label>
+                              Sub
+                            </label>
+                            <input type="number" plac class="form-control" name="part1.sub" [(ngModel)]="camp.Sub" placeholder="Only Numeric Values" />
+                            <span class="form-text text-muted">Please Enter Sub Value</span>
+                          </div>
+                        </div>
+                        <div class="col-xl-4">
+                          <div class="form-group">
+                            <label>
+                              Super
+                            </label>
+                            <input type="number" plac class="form-control" name="part1.Super" [(ngModel)]="camp.Super" placeholder="Only Numeric Values" />
+                            <span class="form-text text-muted">Please Enter Super Value</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-xl-12">
+                          <div class="form-group">
+                            <label>Discount Distribution</label>
+                            <div class="kt-checkbox-inline">
+                              <mat-radio-group aria-label="Select an option" [compareWith]="compareObjects" name="part1.discountDistribution" [(ngModel)]="camp.DiscountDistribution">
+                                <mat-radio-button *ngFor="let item of discountDistributionList; let i = index" name="part1.discountDistribution" [value]="i" [checked]="i === 0">{{item.Name}}</mat-radio-button>
+                              </mat-radio-group>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-xl-6">
+                          <div class="form-group">
+                            <label>Max Discount Amount</label>
+                            <input type="number" plac class="form-control" name="part1.maxDiscountAmount" [(ngModel)]="camp.MaxDiscountAmount" placeholder="Only Numeric Values" />
+                            <span class="form-text text-muted">Please Enter Max Discount Amount Value</span>
+                          </div>
+                        </div>
+                        <div class="col-xl-6">
+                          <div class="form-group">
+                            <label>Amount Limit</label>
+                            <input type="number" plac class="form-control" name="part1.amountLimit" [(ngModel)]="camp.AmountLimit" placeholder="Only Numeric Values" />
+                            <span class="form-text text-muted">Please Enter Amount Limit</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-xl-6">
+                          <div class="form-group">
+                            <label>Count Limit</label>
+                            <input type="number" plac class="form-control" name="part1.countLimit" [(ngModel)]="camp.CountLimit" placeholder="Only Numeric Values" />
+                            <span class="form-text text-muted">Please Enter Count Limit</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-xl-6">
+                          <div class="form-group">
+                            <label>Member Participation Limit (Max)</label>
+                            <input type="number" plac class="form-control" name="part1.memberParticipationLimit" [(ngModel)]="camp.MemberParticipationLimit" placeholder="Only Numeric Values" />
+                            <span class="form-text text-muted">Please Enter Member Participation Limit </span>
+                          </div>
+                        </div>
+                      </div>
+                    </ng-template>
+                  </ngb-tab>
+
+                  <ngb-tab title="Part 2">
+                    <ng-template ngbTabContent>
+                      <div class="row">
+                        <div class="col-xl-6">
+                          <div class="form-group">
+                            <label>Period Type</label>
+                            <mat-select name="part2.periodTypeSelect" [(ngModel)]="camp.PeriodType" class="form-control" [compareWith]="compareObjects">
+                              <mat-select-search></mat-select-search>
+                              <mat-option *ngFor="let item of periodTypeList" [value]="item">{{item.Name}}</mat-option>
+                            </mat-select>
+                            <span class="form-text text-muted">Please Select Period Type</span>
+
+                          </div>
+                        </div>
+                        <div class="col-xl-6">
+                          <div class="form-group">
+                            <label>Period</label>
+                            <input type="number" plac class="form-control" name="part2.Period" [(ngModel)]="camp.Period" placeholder="Only Numeric Values" />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-xl-6">
+                          <div class="form-group">
+                            <label>Min. #of daily TRX</label>
+                            <input type="number" plac class="form-control" name="part2.MinOfDailyTRX" [(ngModel)]="camp.MinOfDailyTRX" placeholder="Only Numeric Values" />
+                          </div>
+                        </div>
+                        <div class="col-xl-6">
+                          <div class="form-group">
+                            <label>Max. #of daily TRX</label>
+                            <input type="number" plac class="form-control" name="part2.MaxOfDailyTRX" [(ngModel)]="camp.MaxOfDailyTRX" placeholder="Only Numeric Values" />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-xl-6">
+                          <div class="form-group">
+                            <label>#of Benefit</label>
+                            <input type="number" plac class="form-control" name="part2.OfBenefit" [(ngModel)]="camp.OfBenefit" placeholder="Only Numeric Values" />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-xl-6">
+                          <div class="form-group">
+                            <label>Max #of Benefit Allowed Per Day</label>
+                            <input type="number" plac class="form-control" name="part2.MaxOfBenefitAllowedPerDay" [(ngModel)]="camp.MaxOfBenefitAllowedPerDay" placeholder="Only Numeric Values" />
+                          </div>
+                        </div>
+                        <div class="col-xl-6">
+                          <div class="form-group">
+                            <label>Max #of Benefit Allowed Per TRX</label>
+                            <input type="number" plac class="form-control" name="part2.MaxOfBenefitAllowedPerTRX" [(ngModel)]="camp.MaxOfBenefitAllowedPerTRX" placeholder="Only Numeric Values" />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-xl-6">
+                          <div class="form-group">
+                            <label>Max #of TRX Allowed</label>
+                            <input type="number" plac class="form-control" name="part2.MaxOfTRXAllowed" [(ngModel)]="camp.MaxOfTRXAllowed" placeholder="Only Numeric Values" />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-xl-12">
+                          <div class="form-group">
+                            <label>Standard Bonus Accumulation</label>
+                            <div class="kt-checkbox-inline">
+                              <mat-radio-group aria-label="Select an option" name="part2.StandardBonusAccumulation" [(ngModel)]="camp.StandardBonusAccumulation">
+                                <mat-radio-button [value]="false">No</mat-radio-button>
+                                <mat-radio-button [value]="true">Yes</mat-radio-button>
+                              </mat-radio-group>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </ng-template>
+                  </ngb-tab>
+
+                </ngb-tabset>
+              </div>
+            </div>
+            <!--end: Form Wizard Step 5-->
+            <!--begin: Form Wizard Step 6-->
+            <div class="pb-5" data-wizard-type="step-content">
+              <h4 class="mb-10 font-weight-bold text-dark">
+                Review your Details and Submit
+              </h4>
+              <div class="border-bottom mb-5 pb-5">
+                <div class="font-weight-bolder mb-3">Current Address:</div>
+                <div class="line-height-xl">
+                  Address Line 1
+                  <br />
+                  Address Line 2 <br />
+                  Melbourne 3000, VIC, Australia
+                </div>
+              </div>
+              <div class="border-bottom mb-5 pb-5">
+                <div class="font-weight-bolder mb-3">Delivery Details:</div>
+                <div class="line-height-xl">
+                  Package: Complete Workstation (Monitor, Computer, Keyboard
+                  &amp; Mouse)
+                  <br />
+                  Weight: 25kg <br />
+                  Dimensions: 110cm (w) x 90cm (h) x 150cm (L)
+                </div>
+              </div>
+              <div class="border-bottom mb-5 pb-5">
+                <div class="font-weight-bolder mb-3">
+                  Delivery Service Type:
+                </div>
+                <div class="line-height-xl">
+                  Overnight Delivery with Regular Packaging
+                  <br />
+                  Preferred Morning (8:00AM - 11:00AM) Delivery
+                </div>
+              </div>
+              <div class="mb-5">
+                <div class="font-weight-bolder mb-3">Delivery Address:</div>
+                <div class="line-height-xl">
+                  Address Line 1
+                  <br />
+                  Address Line 2 <br />
+                  Preston 3072, VIC, Australia
+                </div>
+              </div>
+            </div>
+            <!--end: Form Wizard Step 6-->
+            <!--begin: Form Wizard Step 7-->
+            <div class="pb-5" data-wizard-type="step-content">
+              <h4 class="mb-10 font-weight-bold text-dark">
+                Review your Campaign Details
+              </h4>
+
+              <div [innerHTML]="campaignReviewStr">
+
+              </div>
+
+              *Please check all fields about your campaign.
+              <!--<div class="font-weight-bolder mb-3">Status</div>  {{camp.Statu.Name}}-->
+              <!--<div class="line-height-xl"></div>-->
+
+            </div>
+
+            <!--end: Form Wizard Step 7-->
+            <!--begin: Form Actions -->
+            <div class="d-flex justify-content-between border-top pt-10">
+              <div class="mr-2">
+                <div class="btn btn-light-primary font-weight-bold text-uppercase px-9 py-4"
+                     data-wizard-type="action-prev">
+                  Previous
+                </div>
+              </div>
+              <div>
+                <div (click)="onSubmit()"
+                     class="btn btn-success font-weight-bold text-uppercase px-9 py-4"
+                     data-wizard-type="action-submit">
+                  Submit
+                </div>
+                <div class="btn btn-primary font-weight-bold text-uppercase px-9 py-4"
+                     data-wizard-type="action-next">
+                  Next Step
+                </div>
+              </div>
+            </div>
+            <!--end: Form Actions -->
+          </form>
+          <!--end: Form Wizard Form-->
+        </div>
+      </div>
+
+      <!--<mat-form-field>
+        <input matInput value="Disco party!" placeholder="Message" #message>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput value="Dance" placeholder="Action" #action>
+      </mat-form-field>
+      <button mat-button (click)="openSnackBar(message.value, action.value)">Show snack-bar</button>-->
+
+
+    </div>
+    <!--end: Wizard -->
+  </div>
+</div>

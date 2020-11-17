@@ -1,0 +1,72 @@
+<div class="row">
+
+</div>
+<div class="row">
+  <!--Filter Store-->
+  <div class="col-xl-12">
+    <div class="example-container mat-elevation-z8">
+      <mat-table #storeTable [dataSource]="campaignDataSource">
+        <!--<ng-container matColumnDef="select">
+    <mat-header-cell *matHeaderCellDef>
+      <mat-checkbox (change)="$event ? masterToggle() : null"
+                    [checked]="selection.hasValue() && isAllSelected()"
+                    [indeterminate]="selection.hasValue() && !isAllSelected()">
+      </mat-checkbox>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <mat-checkbox (click)="$event.stopPropagation()"
+                    (change)="$event ? selection.toggle(row) : null"
+                    [checked]="selection.isSelected(row)">
+      </mat-checkbox>
+    </mat-cell>
+  </ng-container>-->
+        <ng-container matColumnDef="CampaignId">
+          <mat-header-cell *matHeaderCellDef> Campaign Id </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.CampaignId}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="CampaignName">
+          <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.CampaignName}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Statu">
+          <mat-header-cell *matHeaderCellDef> Statu </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <!--<span class="label label-lg label-light-danger label-inline">{{element.Statu.Name}}</span>-->
+            {{element.Statu.Name}}
+          </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="CampaignStartDate">
+          <mat-header-cell *matHeaderCellDef> Start Date </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.CampaignStartDate | date:'dd/MM/yyyy'}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="CampaignEndDate">
+          <mat-header-cell *matHeaderCellDef> End Date </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.CampaignEndDate | date:'dd/MM/yyyy'}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="SmsParticipation">
+          <mat-header-cell *matHeaderCellDef> Sms Participation </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.SmsParticipation.Name}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Approval">
+          <mat-header-cell *matHeaderCellDef> Store Type </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.Approval.Name}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef>Actions </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <button mat-icon-button matTooltip="Click to Edit" class="iconbutton" color="primary" (click)="onCampaignEdit(element)">
+              <mat-icon aria-label="Edit">edit</mat-icon>
+            </button>
+            <button mat-icon-button matTooltip="Click to Delete" class="iconbutton" color="warn" (click)="onCampaignDelete(element.CrmId)">
+              <mat-icon aria-label="Delete">delete</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+      <mat-paginator class="pagnacolor" [pageSizeOptions]="[10]" showFirstLastButtons></mat-paginator>
+    </div>
+  </div>
+</div>

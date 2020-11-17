@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\layouts",
+    "\\src\\app\\layouts\\campaingwizard",
+    "\\src\\app\\layouts\\campaingwizard\\wizard",
+    "\\src\\app\\models"
+  ],
+  "SelectedNode": "\\src\\app\\layouts\\campaingwizard\\wizard\\wizard.component.ts",
+  "PreviewInSolutionExplorer": false
+}
